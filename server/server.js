@@ -1,6 +1,6 @@
+require("dotenv").config(); 
 const express = require('express');
 const mongoose = require("mongoose");
-require("dotenv").config(); 
 const app = express();
 const users = require('./routers/users');
 
@@ -53,7 +53,7 @@ app.listen(+port, () => {
 
 // Connect to MongDB
 mongoose.connect(
-    'mongodb+srv://daisybutler:EgBHDWwgAsRe7dH3@cluster1.4ppj9cz.mongodb.net/?retryWrites=true&w=majority', 
+    process.env.MONGODB_URL, 
     {
         useNewUrlParser: true,
         useUnifiedTopology: true
