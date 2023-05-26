@@ -1,9 +1,11 @@
 import './App.css';
-import User from './components/User';
+import TaskPanel from './components/TaskPanel';
 
 function App() {
   return (
-    <User />
+    <div id='main-container'>
+      <TaskPanel />
+    </div>
   );
 }
 

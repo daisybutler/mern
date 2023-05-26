@@ -25,11 +25,7 @@ router.get('/', async (req, res) => {
 
 // send values to the model we just created
 router.post('/addtask', async (req, res) => {
-
   const data = req.body;
-
-  console.log(data)
-
   const stud = new Task({
       title: data.title,
       complete: data.complete
