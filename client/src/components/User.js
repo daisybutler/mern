@@ -2,28 +2,44 @@ import React, { useEffect, useState } from "react";
 
 const User = () => {
     
-    const [users, setUsers] = useState([]);
+    const [tasks, setTasks] = useState([]);
 
-    // proxies to express server and returns the reponse of the route `/api/users`,
+    // proxies to express server and returns the reponse of the route `/api/tasks`,
     // which we can see in routers/users.js returns the documents in the Students model
     const loadData = () => {
-        fetch('/api/users')
+        fetch('/api/tasks')
             .then(res => res.json())
-            .then(users => {
-                setUsers(users);
+            .then(tasks => {
+                setTasks(tasks);
             }).catch(err => console.log(err))
     };
+
+    const addTask = () => {
+        const data = {title: 'Groceries', complete: false};
+        fetch('/api/addtask', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .catch(err => console.log(err))
+    }
 
     useEffect(() => {
         loadData();
     }, []);
 
     return (
+        <>
         <div>
-            {users.map(user => {
-                return <li key={user.id}>{user.name}</li>
+            {tasks.map((task, index) => {
+                return <li key={index}>{task.title}</li>
             })}
         </div>
+        <button onClick={addTask}>Add</button>
+        </>
     )
 }
 
