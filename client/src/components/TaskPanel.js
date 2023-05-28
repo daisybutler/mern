@@ -17,7 +17,7 @@ const TaskPanel = () => {
 
     const addTask = () => {
         const data = {title: 'Groceries', complete: false};
-        fetch('/api/addtask', {
+        fetch('/api/tasks/addtask', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
