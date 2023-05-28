@@ -12,7 +12,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/api/tasks', tasks);
-app.use('/api/addtask', tasks);
 
 const port = process.env.PORT || 8000;
 

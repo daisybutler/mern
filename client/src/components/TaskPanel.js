@@ -25,6 +25,7 @@ const TaskPanel = () => {
             body: JSON.stringify(data)
         })
         .then(res => res.json())
+        .then(tasks => setTasks(tasks))
         .catch(err => console.log(err))
     }
 

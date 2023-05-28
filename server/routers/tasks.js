@@ -26,21 +26,19 @@ router.get('/', async (req, res) => {
 // send values to the model we just created
 router.post('/addtask', async (req, res) => {
   const data = req.body;
-  const stud = new Task({
+  const task = new Task({
       title: data.title,
       complete: data.complete
   });
-  // the save() method saves the model to the db
-  stud.save()
-  stud.save()
-    .then(() => {
-      console.log("One entry added");
-      res.sendStatus(200);
-    })
-    .catch(err => {
-      console.log(err);
-      res.sendStatus(500);
-    });
+  try {
+    await task.save();
+    console.log("One entry added");
+    const updatedTasks = await Task.find({});
+    res.status(200).json(updatedTasks);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
 })
 
 module.exports = router;
