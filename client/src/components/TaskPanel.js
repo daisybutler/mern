@@ -30,6 +30,23 @@ const TaskPanel = () => {
         .catch(err => console.log(err))
     }
 
+    const updateTask = (task) => {
+        const data = {
+            ...task,
+            complete: !task.complete
+        };
+        fetch(`/api/tasks/updatetask/${task._id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(tasks => setTasks(tasks))
+        .catch(err => console.log(err))
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         addTask();
@@ -46,7 +63,8 @@ const TaskPanel = () => {
 
     return (
         <>
-            <TaskList tasks={tasks} />
+            <h1>To do:</h1>
+            <TaskList tasks={tasks} updateTask={updateTask} />
             <form id="addTask" method="POST" onSubmit={handleSubmit}>
                 <input type='text' id='taskInput' value={taskInput} onChange={handleChange}></input>
             </form>
