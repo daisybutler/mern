@@ -66,7 +66,7 @@ const TaskPanel = () => {
             <h1>To do:</h1>
             <TaskList tasks={tasks} updateTask={updateTask} />
             <form id="addTask" method="POST" onSubmit={handleSubmit}>
-                <input type='text' id='taskInput' value={taskInput} onChange={handleChange}></input>
+                <input type='text' id='taskInput' placeholder="Add task..." value={taskInput} onChange={handleChange}></input>
             </form>
         </>
     )
