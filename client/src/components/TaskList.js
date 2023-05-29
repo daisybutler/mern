@@ -34,7 +34,7 @@ const TaskList = ({ tasks, updateTask, type, handleDelete }) => {
                                 return (
                                     <li key={index} className={(task.complete) ? 'complete' : ''} onMouseOver={() => handleMouseOver(task._id)} onMouseLeave={handleMouseLeave}>
                                         <input id={`checkbox-${type}-${index}`} checked={task.complete} onChange={(e) => updateTask(e, task)} type="checkbox"></input>
-                                        <label for={`checkbox-${type}-${index}`}>
+                                        <label htmlFor={`checkbox-${type}-${index}`}>
                                             <FontAwesomeIcon icon={(type === 'active') ? CircleOutline : CircleFilled} />
                                         </label>
                                         {task.title}
