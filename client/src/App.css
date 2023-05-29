@@ -36,10 +36,6 @@ body {
     border-radius: 0.75rem;
 }
 
-#task-list-active .completing {
-    color: rgb(121, 217, 77);
-}
-
 .task-list-container:not(.expanded) {
     height: 2rem;
     overflow: hidden;
@@ -70,7 +66,22 @@ body {
 
 .task-list li input[type="checkbox"] {
     display: none;
-  }
+}
+
+.task-list .fa-xmark {
+    visibility: hidden;
+}
+
+.task-list .remove-button {
+    margin-left: auto;
+    background-color: transparent;
+    width: fit-content;
+    border: none;
+}
+
+.show-controls {
+    visibility: visible !important;
+}
 
 .task-list li svg {
     color: #797979;
@@ -80,7 +91,6 @@ body {
 
 .task-list li svg:hover {
     cursor: pointer;
-
 }
 
 .task-list li:hover {

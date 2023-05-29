@@ -59,4 +59,21 @@ router.patch('/updatetask/:taskId', async (req, res) => {
   }
 })
 
+router.delete('/deletetask/:taskId', async (req, res) => {
+  const { taskId } = req.params;
+  const { title, complete } = req.body;
+  try {
+    const task = await Task.findByIdAndDelete(taskId);
+    if (!task) {
+      return res.status(404).json({ error: 'Task not found' });
+    }
+    console.log("Task deleted");
+    const updatedTasks = await Task.find({});
+    res.status(200).json(updatedTasks);
+  } catch (err) {
+    console.log(err);
+    res.sendStatus(500);
+  }
+})
+
 module.exports = router;

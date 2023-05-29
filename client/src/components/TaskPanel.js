@@ -47,11 +47,24 @@ const TaskPanel = () => {
         .catch(err => console.log(err))
     }
 
+    const deleteTask = (id) => {
+        fetch(`/api/tasks/deletetask/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(tasks => setTasks(tasks))
+        .catch(err => console.log(err))
+
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         addTask();
         setTaskInput(""); // Clear the input field after submitting
-      }
+    }
     
     const handleChange = (e) => {
         setTaskInput(e.target.value);
@@ -63,11 +76,11 @@ const TaskPanel = () => {
 
     return (
         <>
-            <TaskList tasks={tasks} updateTask={updateTask} type={'active'} />
+            <TaskList tasks={tasks} updateTask={updateTask} type={'active'} handleDelete={deleteTask} />
             <form id="addTask" method="POST" onSubmit={handleSubmit}>
                 <input type='text' id='taskInput' placeholder="Add task..." value={taskInput} onChange={handleChange}></input>
             </form>
-            <TaskList tasks={tasks} updateTask={updateTask} type={'complete'} />
+            <TaskList tasks={tasks} updateTask={updateTask} type={'complete'} handleDelete={deleteTask} />
         </>
     )
 }
