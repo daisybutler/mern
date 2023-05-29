@@ -4,6 +4,8 @@ html {
 
 body {
    font-size: 1.4rem;
+   background-color: #A9B0BB;
+
 }
 
 #main-container {
@@ -11,8 +13,6 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: #A9B0BB;
-    height: 100vh;
 }
 
 .task-list-container {
@@ -25,7 +25,7 @@ body {
 }
 
 #task-list-complete {
-    margin-top: 1rem;
+    margin-top: 4rem;
 }
 
 .task-list {
