@@ -62,13 +62,13 @@ const TaskPanel = () => {
     }, []);
 
     return (
-        <>
-            <h1>To do:</h1>
-            <TaskList tasks={tasks} updateTask={updateTask} />
+        <div id="task-list-active">
+            <TaskList tasks={tasks} updateTask={updateTask} type={'active'} />
             <form id="addTask" method="POST" onSubmit={handleSubmit}>
                 <input type='text' id='taskInput' placeholder="Add task..." value={taskInput} onChange={handleChange}></input>
             </form>
-        </>
+            <TaskList tasks={tasks} updateTask={updateTask} type={'complete'} />
+        </div>
     )
 }
 
