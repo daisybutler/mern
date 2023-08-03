@@ -103,7 +103,6 @@ body {
 }
 
 form {
-    width: 57%;
     display: flex;
     justify-content: center;
 }
@@ -112,7 +111,8 @@ form {
     padding: 2rem;
     border: none;
     color: #333;
-    width: 100%;
+    width: 50vw;
+    max-width: 500px;
     border-radius: 0 0 .75rem .75rem;
 }
   
